@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriVoice - 農業現場音声入力アプリ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌾 AgriVoice</h1>
+            <p>農業現場音声入力アプリ</p>
+        </header>
+
+        <main class="main-content">
+            <!-- 音声入力セクション -->
+            <section class="voice-input-section">
+                <div class="voice-controls">
+                    <button id="startRecording" class="btn-primary voice-btn">
+                        <span class="icon">🎤</span>
+                        音声入力開始
+                    </button>
+                    <button id="stopRecording" class="btn-secondary voice-btn" disabled>
+                        <span class="icon">⏹️</span>
+                        停止
+                    </button>
+                </div>
+                
+                <div class="voice-feedback">
+                    <div id="listeningIndicator" class="listening-indicator">
+                        <span class="pulse"></span>
+                        <span>音声を聞いています...</span>
+                    </div>
+                    <div id="voiceResult" class="voice-result">
+                        <h3>認識結果:</h3>
+                        <p id="recognizedText">ここに音声認識結果が表示されます</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 作業記録フォーム -->
+            <section class="work-record-section">
+                <h2>作業記録</h2>
+                <form id="workRecordForm">
+                    <div class="form-group">
+                        <label for="workType">作業種類:</label>
+                        <select id="workType" name="workType">
+                            <option value="">選択してください</option>
+                            <option value="seeding">播種</option>
+                            <option value="planting">植付</option>
+                            <option value="fertilizing">施肥</option>
+                            <option value="pesticide">農薬散布</option>
+                            <option value="weeding">除草</option>
+                            <option value="harvesting">収穫</option>
+                            <option value="inspection">点検</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cropType">作物:</label>
+                        <select id="cropType" name="cropType">
+                            <option value="">選択してください</option>
+                            <option value="rice">稲</option>
+                            <option value="wheat">麦</option>
+                            <option value="corn">トウモロコシ</option>
+                            <option value="soybean">大豆</option>
+                            <option value="potato">ジャガイモ</option>
+                            <option value="tomato">トマト</option>
+                            <option value="cabbage">キャベツ</option>
+                            <option value="lettuce">レタス</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fieldName">圃場名:</label>
+                        <input type="text" id="fieldName" name="fieldName" placeholder="例: 第1圃場">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workDetails">作業詳細:</label>
+                        <textarea id="workDetails" name="workDetails" rows="4" placeholder="作業の詳細を入力してください"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">数量/面積:</label>
+                        <input type="text" id="quantity" name="quantity" placeholder="例: 10kg, 0.5ha">
+                    </div>
+
+                    <button type="submit" class="btn-primary">記録保存</button>
+                </form>
+            </section>
+
+            <!-- 位置情報セクション -->
+            <section class="location-section">
+                <h2>位置情報</h2>
+                <div class="location-info">
+                    <button id="getLocation" class="btn-secondary">
+                        <span class="icon">📍</span>
+                        現在地取得
+                    </button>
+                    <div id="locationResult" class="location-result">
+                        <p>位置情報がまだ取得されていません</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 記録履歴セクション -->
+            <section class="history-section">
+                <h2>作業履歴</h2>
+                <div class="history-controls">
+                    <button id="showHistory" class="btn-secondary">履歴表示</button>
+                    <button id="exportData" class="btn-secondary">データ出力</button>
+                </div>
+                <div id="historyList" class="history-list"></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 AgriVoice - 農業現場音声入力アプリ</p>
+        </footer>
+    </div>
+
+    <!-- 音声フィードバック用の隠し要素 -->
+    <audio id="audioFeedback" style="display: none;"></audio>
+
+    <script src="js/app.js"></script>
+    <script src="js/voice-recognition.js"></script>
+    <script src="js/data-manager.js"></script>
+    <script src="js/location-manager.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "AgriVoice - 農業現場音声入力アプリ",
+  "short_name": "AgriVoice",
+  "description": "農業現場での作業記録を音声入力で効率化するアプリ",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#4CAF50",
+  "background_color": "#f5f5f5",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["productivity", "business"],
+  "scope": "/",
+  "lang": "ja",
+  "permissions": [
+    "microphone",
+    "geolocation"
+  ],
+  "features": [
+    "voice-recognition",
+    "location-services",
+    "offline-storage"
+  ]
+}
