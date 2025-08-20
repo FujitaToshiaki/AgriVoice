@@ -46,6 +46,33 @@
                 <h2>作業記録</h2>
                 <form id="workRecordForm">
                     <div class="form-group">
+                        <label for="workDate">作業日:</label>
+                        <div class="date-input-container">
+                            <input type="text" id="workDate" name="workDate" placeholder="日付を選択してください" readonly>
+                            <button type="button" id="openCalendar" class="btn-calendar">
+                                <span class="icon">📅</span>
+                            </button>
+                        </div>
+                        <div id="calendar" class="calendar hidden">
+                            <div class="calendar-header">
+                                <button type="button" id="prevMonth" class="btn-nav">&lt;</button>
+                                <span id="currentMonth"></span>
+                                <button type="button" id="nextMonth" class="btn-nav">&gt;</button>
+                            </div>
+                            <div class="calendar-weekdays">
+                                <div>日</div>
+                                <div>月</div>
+                                <div>火</div>
+                                <div>水</div>
+                                <div>木</div>
+                                <div>金</div>
+                                <div>土</div>
+                            </div>
+                            <div id="calendarDays" class="calendar-days"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="workType">作業種類:</label>
                         <select id="workType" name="workType">
                             <option value="">選択してください</option>
@@ -130,5 +157,6 @@
     <script src="js/voice-recognition.js"></script>
     <script src="js/data-manager.js"></script>
     <script src="js/location-manager.js"></script>
+    <script src="js/calendar-manager.js"></script>
 </body>
 </html>

@@ -28,11 +28,16 @@ class DataManager {
     }
 
     addRecord(recordData) {
+        // カレンダーで選択された日付を使用、なければ今日の日付
+        const selectedDate = window.calendarManager ? window.calendarManager.getSelectedDate() : new Date();
+        const workDate = selectedDate || new Date();
+        
         const record = {
             id: this.generateId(),
-            timestamp: new Date().toISOString(),
-            date: new Date().toLocaleDateString('ja-JP'),
+            timestamp: workDate.toISOString(),
+            date: workDate.toLocaleDateString('ja-JP'),
             time: new Date().toLocaleTimeString('ja-JP'),
+            workDate: window.calendarManager ? window.calendarManager.getSelectedDateString() : workDate.toISOString().split('T')[0],
             ...recordData
         };
 
